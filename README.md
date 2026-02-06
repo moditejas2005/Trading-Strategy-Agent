@@ -221,4 +221,10 @@ For questions or support, please open an issue on GitHub.
 
 ---
 
+## 🖼️ Preview
+
+![Dashboard Preview](assets/dashboard_preview.png)
+
+---
+
 **Made with ❤️ by Tejas Modi**
