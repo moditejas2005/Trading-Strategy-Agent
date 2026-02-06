@@ -4,7 +4,7 @@ const API_BASE = 'http://localhost:5000/api';
 let currentData = null;
 
 async function analyzeStock() {
-    const symbol = document.getElementById('symbol').value.toUpperCase();
+    const symbol = document.getElementById('symbol').value;
     const period = document.getElementById('period').value;
 
     if (!symbol) {

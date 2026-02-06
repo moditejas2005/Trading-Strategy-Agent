@@ -1,74 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Trading Strategy Agent</title>
+    <title>Trading Strategy Agent</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 </head>
+
 <body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+                <div>
+                    <div>Trading Strategy Agent</div>
+                    <div class="header-subtitle">AI-Powered Market Analysis • INR</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
-        <header>
-            <h1>🤖 AI Trading Strategy Agent</h1>
-            <p class="subtitle">Intelligent Trading with ScaleDown API Optimization</p>
-        </header>
+        <div class="control-panel">
+            <div class="control-row">
+                <div class="form-group">
+                    <label class="form-label" for="symbol">Stock Symbol</label>
+                    <select id="symbol" class="form-select">
+                        <optgroup label="Indian Stocks (NSE)">
+                            <option value="RELIANCE.NS">Reliance Industries</option>
+                            <option value="TCS.NS">Tata Consultancy Services</option>
+                            <option value="HDFCBANK.NS">HDFC Bank</option>
+                            <option value="INFY.NS">Infosys</option>
+                            <option value="ICICIBANK.NS">ICICI Bank</option>
+                            <option value="HINDUNILVR.NS">Hindustan Unilever</option>
+                            <option value="SBIN.NS">State Bank of India</option>
+                            <option value="BHARTIARTL.NS">Bharti Airtel</option>
+                            <option value="BAJFINANCE.NS">Bajaj Finance</option>
+                            <option value="WIPRO.NS">Wipro</option>
+                            <option value="KOTAKBANK.NS">Kotak Mahindra Bank</option>
+                            <option value="LT.NS">Larsen & Toubro</option>
+                            <option value="AXISBANK.NS">Axis Bank</option>
+                            <option value="MARUTI.NS">Maruti Suzuki</option>
+                            <option value="TATAMOTORS.NS">Tata Motors</option>
+                        </optgroup>
+                        <optgroup label="US Stocks">
+                            <option value="AAPL" selected>Apple Inc.</option>
+                            <option value="GOOGL">Alphabet (Google)</option>
+                            <option value="MSFT">Microsoft</option>
+                            <option value="AMZN">Amazon</option>
+                            <option value="TSLA">Tesla</option>
+                            <option value="META">Meta (Facebook)</option>
+                            <option value="NVDA">NVIDIA</option>
+                            <option value="JPM">JPMorgan Chase</option>
+                            <option value="V">Visa</option>
+                            <option value="JNJ">Johnson & Johnson</option>
+                        </optgroup>
+                    </select>
+                </div>
 
-        <div class="controls-panel">
-            <div class="input-group">
-                <label for="symbol">Stock Symbol:</label>
-                <input type="text" id="symbol" value="AAPL" placeholder="Enter stock symbol">
-            </div>
-            
-            <div class="input-group">
-                <label for="period">Period:</label>
-                <select id="period">
-                    <option value="1mo">1 Month</option>
-                    <option value="3mo" selected>3 Months</option>
-                    <option value="6mo">6 Months</option>
-                    <option value="1y">1 Year</option>
-                    <option value="2y">2 Years</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label class="form-label" for="period">Time Period</label>
+                    <select id="period" class="form-select">
+                        <option value="1mo">1 Month</option>
+                        <option value="3mo" selected>3 Months</option>
+                        <option value="6mo">6 Months</option>
+                        <option value="1y">1 Year</option>
+                        <option value="2y">2 Years</option>
+                    </select>
+                </div>
 
-            <button class="btn btn-primary" onclick="analyzeStock()">📊 Analyze Strategy</button>
-            <button class="btn btn-secondary" onclick="runBacktest()">🔄 Run Backtest</button>
+                <button class="btn btn-primary" onclick="analyzeStock()">
+                    <i class="fas fa-search"></i> Analyze
+                </button>
+                <button class="btn btn-secondary" onclick="runBacktest()">
+                    <i class="fas fa-history"></i> Backtest
+                </button>
+            </div>
         </div>
 
-        <div id="loading" class="loading" style="display: none;">
+        <div class="stock-info">
+            <p><i class="fas fa-info-circle"></i> <strong>25 stocks available:</strong> 15 Indian (NSE) + 10 US stocks.
+                Prices shown in ₹ (INR)</p>
+        </div>
+
+        <div id="loading" class="card loading-state" style="display: none;">
             <div class="spinner"></div>
-            <p>Analyzing market data...</p>
+            <p class="loading-text">Analyzing market data...</p>
         </div>
 
         <div id="results" style="display: none;">
-            <section class="card">
-                <h2>📈 Market Overview</h2>
-                <div id="marketInfo"></div>
-            </section>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="fas fa-chart-bar"></i> Market Overview</h2>
+                </div>
+                <div id="marketInfo" class="data-grid"></div>
+            </div>
 
-            <section class="card">
-                <h2>📊 Technical Indicators</h2>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="fas fa-chart-area"></i> Technical Indicators</h2>
+                </div>
                 <div id="indicators"></div>
-            </section>
+            </div>
 
-            <section class="card">
-                <h2>🎯 Trading Strategy</h2>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="fas fa-bullseye"></i> Trading Strategy</h2>
+                </div>
                 <div id="strategy"></div>
-            </section>
+            </div>
 
-            <section class="card">
-                <h2>📉 Price Chart</h2>
-                <div id="chart"></div>
-            </section>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="fas fa-chart-line"></i> Price History</h2>
+                </div>
+                <div id="chart" class="chart-container"></div>
+            </div>
 
-            <section class="card" id="backtestResults" style="display: none;">
-                <h2>💹 Backtest Results</h2>
-                <div id="backtestData"></div>
-                <div id="portfolioChart"></div>
-            </section>
+            <div class="card" id="backtestResults" style="display: none;">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="fas fa-calculator"></i> Backtest Results</h2>
+                </div>
+                <div id="backtestData" class="data-grid"></div>
+                <div id="portfolioChart" class="chart-container"></div>
+            </div>
         </div>
     </div>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
+
 </html>
