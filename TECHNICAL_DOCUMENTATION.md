@@ -184,22 +184,22 @@ The system is pre-configured with 25 diverse stocks:
 
 ---
 
-## Appendix A: File Structure
-```text
-Trading-Strategy-Agent/
-├── modules/
-│   ├── data_collector.py     # API Integration
-│   ├── indicators.py         # Technical Analysis
-│   ├── strategy_generator.py # Signal Generation
-│   └── backtester.py         # Simulation Engine
-├── static/
-│   ├── css/style.css         # Dark Theme Design
-│   └── js/app.js             # UI Logic & Charts
-├── templates/
-│   └── index.html            # Main Dashboard
-├── app.py                    # Flask API Server
-└── README.md                 # Project Overview
-```
+## Appendix B: Dependencies
+• flask==3.0.0
+• yfinance==0.2.35
+• pandas==2.1.4
+• plotly==5.18.0
+• alpha-vantage==2.3.1
+• sqlalchemy==2.0.25
+• python-dotenv==1.0.0
+• psycopg2-binary==2.9.9
+• pytest==7.4.4
 
----
-**Made with ❤️ by Tejas Modi**
+## Appendix C: Security Considerations
+• Environment variable storage for API keys (.env)
+• SQL injection prevention via SQLAlchemy ORM
+• Secure API key management (Gitignore enabled)
+• Cross-Origin Resource Sharing (CORS) configuration
+• Regular security audits recommended
+• No hardcoded credentials in codebase
+
