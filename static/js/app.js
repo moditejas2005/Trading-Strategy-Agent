@@ -258,7 +258,9 @@ function plotPortfolioChart(data) {
         plot_bgcolor: '#0f172a',
         font: { color: '#f1f5f9' },
         xaxis: { gridcolor: '#334155' },
-        yaxis: { gridcolor: '#334155', title: 'Value ($)' }
+        yaxis: { gridcolor: '#334155', title: 'Value (₹)' },
+        height: 500,
+        margin: { t: 50, b: 50, l: 60, r: 30 }
     };
 
     Plotly.newPlot('portfolioChart', [trace], layout, { responsive: true });
