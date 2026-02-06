@@ -215,16 +215,10 @@ This software is for **educational purposes only**. Always do your own research 
 
 ---
 
-## 📧 Contact
-
-For questions or support, please open an issue on GitHub.
-
----
-
 ## 🖼️ Preview
 
 ![Dashboard Preview](assets/dashboard_preview.png)
 
 ---
 
-**Made with ❤️ by Tejas Modi**
+

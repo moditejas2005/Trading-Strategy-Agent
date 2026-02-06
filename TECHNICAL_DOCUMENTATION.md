@@ -1,4 +1,4 @@
-# 📈 AI Trading Strategy Agent - Technical Documentation
+# AI Trading Strategy Agent - Technical Documentation
 
 ## Table of Contents
 1. [Project Overview](#1-project-overview)
@@ -38,16 +38,44 @@ The **AI Trading Strategy Agent** is a production-ready financial intelligence s
 ### 2.1 High-Level Architecture
 The system follows a clean, modular architecture separating data, logic, and presentation:
 
-```mermaid
-graph TD
-    A[Interactive Dashboard] <--> B[Flask REST API]
-    B <--> C[Data Collector]
-    B <--> D[Indicators Engine]
-    B <--> E[Strategy Generator]
-    B <--> F[Backtesting Engine]
-    C --> G[yfinance API]
-    C --> H[Alpha Vantage API]
-    B <--> I[(PostgreSQL DB)]
+```
+┌─────────────────────────────┐
+│     Financial Data APIs     │
+│  (yfinance + Alpha Vantage) │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│    Data Collection Module   │
+│    (data_collector.py)      │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│   Currency Conversion       │
+│   (USD → INR Live Rates)    │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│  Technical Indicators       │
+│  (RSI, MACD, MA, Bollinger) │
+│  (indicators.py)            │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│  AI Strategy Generator      │
+│  (BUY/SELL/HOLD Signals)    │
+│  (strategy_generator.py)    │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│  Backtesting Engine         │
+│  (Historical Performance)   │
+│  (backtester.py)            │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│  Flask API + Dashboard      │
+│  (Interactive Web UI)       │
+└─────────────────────────────┘
 ```
 
 ### 2.2 Data Flow
