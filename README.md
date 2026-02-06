@@ -1,6 +1,5 @@
 # Trading Strategy Agent
 
-[![CI/CD](https://github.com/moditejas2005/Trading-Strategy-Agent/actions/workflows/ci.yml/badge.svg)](https://github.com/moditejas2005/Trading-Strategy-Agent/actions)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Flask](https://img.shields.io/badge/Flask-3.0.0-green.svg)](https://flask.palletsprojects.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -31,7 +30,6 @@ An intelligent AI-powered trading strategy system that analyzes financial market
 - SQLAlchemy ORM for database operations
 - Modular Python architecture
 - Real-time data visualization with Plotly
-- CI/CD pipeline with GitHub Actions
 - Comprehensive test suite with pytest
 - Example scripts and documentation
 
