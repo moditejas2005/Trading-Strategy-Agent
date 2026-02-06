@@ -32,26 +32,47 @@ class DataCollector:
         
     def fetch_data(self) -> Optional[pd.DataFrame]:
         """
-        Fetch historical market data
+        Fetch historical market data with retry logic
         
         Returns:
             DataFrame with OHLCV data or None if fetch fails
         """
-        try:
-            logger.info(f"Fetching data for {self.symbol}...")
-            ticker = yf.Ticker(self.symbol)
-            self.data = ticker.history(period=self.period, interval=self.interval)
-            
-            if self.data.empty:
-                logger.warning(f"No data found for {self.symbol}")
-                return None
+        max_retries = 3
+        retry_count = 0
+        
+        while retry_count < max_retries:
+            try:
+                logger.info(f"Fetching data for {self.symbol} (attempt {retry_count + 1}/{max_retries})...")
                 
-            logger.info(f"Successfully fetched {len(self.data)} records for {self.symbol}")
-            return self.data
-            
-        except Exception as e:
-            logger.error(f"Error fetching data for {self.symbol}: {str(e)}")
-            return None
+                # Create ticker with enhanced settings
+                ticker = yf.Ticker(self.symbol)
+                
+                # Try to fetch data
+                self.data = ticker.history(
+                    period=self.period, 
+                    interval=self.interval,
+                    auto_adjust=True,
+                    actions=False
+                )
+                
+                if self.data is not None and not self.data.empty:
+                    # Remove timezone information if present
+                    if self.data.index.tz is not None:
+                        self.data.index = self.data.index.tz_localize(None)
+                    
+                    logger.info(f"Successfully fetched {len(self.data)} records for {self.symbol}")
+                    return self.data
+                else:
+                    logger.warning(f"No data found for {self.symbol} on attempt {retry_count + 1}")
+                    retry_count += 1
+                    
+            except Exception as e:
+                logger.error(f"Error fetching data for {self.symbol} (attempt {retry_count + 1}): {str(e)}")
+                retry_count += 1
+        
+        # All retries failed
+        logger.error(f"Failed to fetch data for {self.symbol} after {max_retries} attempts")
+        return None
     
     def get_latest_price(self) -> Optional[float]:
         """
