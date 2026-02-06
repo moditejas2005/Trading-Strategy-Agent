@@ -234,6 +234,5 @@ This software is for **educational purposes only**. Always do your own research 
 
 ---
 
-**Made with ❤️ by Tejas Modi**
 
 
