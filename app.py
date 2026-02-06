@@ -9,7 +9,6 @@ from modules.data_collector import DataCollector
 from modules.indicators import TechnicalIndicators
 from modules.strategy_generator import StrategyGenerator
 from modules.backtester import Backtester
-from modules.prompt_optimizer import PromptOptimizer
 import os
 
 # Initialize Flask app
@@ -207,30 +206,6 @@ def run_backtest():
         logger.error(f"Error in run_backtest: {str(e)}")
         return jsonify({'error': str(e)}), 500
 
-
-@app.route('/api/optimize-prompt', methods=['POST'])
-def optimize_prompt():
-    """
-    Optimize a prompt using ScaleDown API
-    Body: { prompt, target_reduction }
-    """
-    try:
-        data = request.get_json()
-        prompt = data.get('prompt', '')
-        target_reduction = data.get('target_reduction', 0.5)
-        
-        if not prompt:
-            return jsonify({'error': 'Prompt is required'}), 400
-        
-        scaledown_key = app.config.get('SCALEDOWN_API_KEY')
-        optimizer = PromptOptimizer(api_key=scaledown_key)
-        result = optimizer.optimize_prompt(prompt, target_reduction=target_reduction)
-        
-        return jsonify(result)
-    
-    except Exception as e:
-        logger.error(f"Error in optimize_prompt: {str(e)}")
-        return jsonify({'error': str(e)}), 500
 
 
 if __name__ == '__main__':

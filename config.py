@@ -13,7 +13,6 @@ class Config:
     
     # API Keys
     OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-    SCALEDOWN_API_KEY = os.getenv('SCALEDOWN_API_KEY')
     ALPHA_VANTAGE_API_KEY = os.getenv('ALPHA_VANTAGE_API_KEY', '8MZEFUFMBSNMQWA9')
     
     # Database Configuration
