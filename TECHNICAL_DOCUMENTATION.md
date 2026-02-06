@@ -184,6 +184,25 @@ The system is pre-configured with 25 diverse stocks:
 
 ---
 
+## Appendix A: File Structure
+```text
+Trading-Strategy-Agent/
+├── modules/
+│   ├── data_collector.py     # API Integration
+│   ├── indicators.py         # Technical Analysis
+│   ├── strategy_generator.py # Signal Generation
+│   └── backtester.py         # Simulation Engine
+├── static/
+│   ├── css/style.css         # Dark Theme Design
+│   └── js/app.js             # UI Logic & Charts
+├── templates/
+│   └── index.html            # Main Dashboard
+├── app.py                    # Flask API Server
+└── README.md                 # Project Overview
+```
+
+---
+
 ## Appendix B: Dependencies
 • flask==3.0.0
 • yfinance==0.2.35
