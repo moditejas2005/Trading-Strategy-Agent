@@ -220,27 +220,60 @@ function plotPriceChart(data) {
         y: closes,
         type: 'scatter',
         mode: 'lines',
-        name: 'Close Price',
-        line: { color: '#2563eb', width: 2 }
+        name: 'Price',
+        line: {
+            color: '#0066FF',
+            width: 3,
+            shape: 'spline',
+            smoothing: 1.3
+        },
+        fill: 'tozeroy',
+        fillcolor: 'rgba(0, 102, 255, 0.1)',
+        hovertemplate: '<b>Price:</b> ₹%{y:.2f}<br><b>Date:</b> %{x}<extra></extra>'
     };
 
     const layout = {
-        title: 'Price History',
         paper_bgcolor: '#222631',
         plot_bgcolor: '#1A1D2E',
-        font: { color: '#f1f5f9' },
+        font: { color: '#f1f5f9', family: 'Inter, system-ui, sans-serif' },
+        hovermode: 'x unified',
         xaxis: {
             gridcolor: '#2F3441',
             tickangle: -45,
-            automargin: true
+            automargin: true,
+            rangeselector: {
+                buttons: [
+                    { count: 1, label: '1m', step: 'month', stepmode: 'backward' },
+                    { count: 3, label: '3m', step: 'month', stepmode: 'backward' },
+                    { count: 6, label: '6m', step: 'month', stepmode: 'backward' },
+                    { step: 'all' }
+                ],
+                bgcolor: '#222631',
+                activecolor: '#0066FF',
+                font: { color: '#FFFFFF' }
+            },
+            rangeslider: { visible: false } // Set to true if you want a bottom slider
         },
-        yaxis: { gridcolor: '#2F3441', title: 'Price (₹)' },
-        height: 500,
-        margin: { t: 50, b: 100, l: 80, r: 40 },
-        autosize: true
+        yaxis: {
+            gridcolor: '#2F3441',
+            title: 'Price (₹)',
+            fixedrange: false,
+            side: 'right' // Professional trading charts often have Y-axis on the right
+        },
+        height: 600, // Slightly taller for more detail
+        margin: { t: 60, b: 80, l: 30, r: 80 }, // Shifted l/r for right-side Y-axis
+        autosize: true,
+        showlegend: false
     };
 
-    Plotly.newPlot('chart', [trace], layout, { responsive: true, displayModeBar: false });
+    const config = {
+        responsive: true,
+        displayModeBar: true, // Re-enabled for pro features like zoom/pan
+        modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+        displaylogo: false
+    };
+
+    Plotly.newPlot('chart', [trace], layout, config);
 }
 
 function plotPortfolioChart(data) {
@@ -253,25 +286,36 @@ function plotPortfolioChart(data) {
         type: 'scatter',
         mode: 'lines',
         fill: 'tozeroy',
-        name: 'Portfolio Value',
-        line: { color: '#00C853', width: 2 },
-        fillcolor: 'rgba(0, 200, 83, 0.1)'
+        name: 'Portfolio',
+        line: {
+            color: '#00C853',
+            width: 3,
+            shape: 'spline',
+            smoothing: 1.3
+        },
+        fillcolor: 'rgba(0, 200, 83, 0.1)',
+        hovertemplate: '<b>Value:</b> ₹%{y:.2f}<br><b>Date:</b> %{x}<extra></extra>'
     };
 
     const layout = {
-        title: 'Portfolio Value Over Time',
         paper_bgcolor: '#222631',
         plot_bgcolor: '#1A1D2E',
-        font: { color: '#f1f5f9' },
+        font: { color: '#f1f5f9', family: 'Inter, system-ui, sans-serif' },
+        hovermode: 'x unified',
         xaxis: {
             gridcolor: '#2F3441',
             tickangle: -45,
             automargin: true
         },
-        yaxis: { gridcolor: '#2F3441', title: 'Value (₹)' },
+        yaxis: {
+            gridcolor: '#2F3441',
+            title: 'Value (₹)',
+            side: 'right'
+        },
         height: 500,
-        margin: { t: 50, b: 100, l: 80, r: 40 },
-        autosize: true
+        margin: { t: 50, b: 100, l: 30, r: 80 },
+        autosize: true,
+        showlegend: false
     };
 
     Plotly.newPlot('portfolioChart', [trace], layout, { responsive: true, displayModeBar: false });
