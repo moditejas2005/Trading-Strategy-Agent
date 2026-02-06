@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trading Strategy Agent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Trading Strategy Agent</h1>
+            <p class="subtitle">Intelligent Trading with ScaleDown API Optimization</p>
+        </header>
+
+        <div class="controls-panel">
+            <div class="input-group">
+                <label for="symbol">Stock Symbol:</label>
+                <input type="text" id="symbol" value="AAPL" placeholder="Enter stock symbol">
+            </div>
+            
+            <div class="input-group">
+                <label for="period">Period:</label>
+                <select id="period">
+                    <option value="1mo">1 Month</option>
+                    <option value="3mo" selected>3 Months</option>
+                    <option value="6mo">6 Months</option>
+                    <option value="1y">1 Year</option>
+                    <option value="2y">2 Years</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" onclick="analyzeStock()">📊 Analyze Strategy</button>
+            <button class="btn btn-secondary" onclick="runBacktest()">🔄 Run Backtest</button>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyzing market data...</p>
+        </div>
+
+        <div id="results" style="display: none;">
+            <section class="card">
+                <h2>📈 Market Overview</h2>
+                <div id="marketInfo"></div>
+            </section>
+
+            <section class="card">
+                <h2>📊 Technical Indicators</h2>
+                <div id="indicators"></div>
+            </section>
+
+            <section class="card">
+                <h2>🎯 Trading Strategy</h2>
+                <div id="strategy"></div>
+            </section>
+
+            <section class="card">
+                <h2>📉 Price Chart</h2>
+                <div id="chart"></div>
+            </section>
+
+            <section class="card" id="backtestResults" style="display: none;">
+                <h2>💹 Backtest Results</h2>
+                <div id="backtestData"></div>
+                <div id="portfolioChart"></div>
+            </section>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
