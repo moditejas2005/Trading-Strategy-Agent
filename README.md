@@ -36,6 +36,45 @@ An intelligent AI-powered trading strategy system that analyzes financial market
 - Comprehensive test suite with pytest
 - Example scripts and documentation
 
+## 📋 Available Stocks (25 Total)
+
+### Indian Stocks (NSE) - 15
+
+| Symbol | Company |
+|--------|---------|
+| RELIANCE.NS | Reliance Industries |
+| TCS.NS | Tata Consultancy Services |
+| HDFCBANK.NS | HDFC Bank |
+| INFY.NS | Infosys |
+| ICICIBANK.NS | ICICI Bank |
+| HINDUNILVR.NS | Hindustan Unilever |
+| SBIN.NS | State Bank of India |
+| BHARTIARTL.NS | Bharti Airtel |
+| BAJFINANCE.NS | Bajaj Finance |
+| WIPRO.NS | Wipro |
+| KOTAKBANK.NS | Kotak Mahindra Bank |
+| LT.NS | Larsen & Toubro |
+| AXISBANK.NS | Axis Bank |
+| MARUTI.NS | Maruti Suzuki |
+| TATAMOTORS.NS | Tata Motors |
+
+### US Stocks - 10
+
+| Symbol | Company |
+|--------|---------|
+| AAPL | Apple Inc. |
+| GOOGL | Alphabet (Google) |
+| MSFT | Microsoft |
+| AMZN | Amazon |
+| TSLA | Tesla |
+| META | Meta (Facebook) |
+| NVDA | NVIDIA |
+| JPM | JPMorgan Chase |
+| V | Visa |
+| JNJ | Johnson & Johnson |
+
+> **Note:** All prices are displayed in ₹ (INR) with live USD to INR conversion.
+
 ## 🚀 Quick Start
 
 ### Prerequisites
