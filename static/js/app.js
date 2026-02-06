@@ -230,7 +230,7 @@ function plotPriceChart(data) {
         plot_bgcolor: '#0f172a',
         font: { color: '#f1f5f9' },
         xaxis: { gridcolor: '#334155' },
-        yaxis: { gridcolor: '#334155', title: 'Price ($)' }
+        yaxis: { gridcolor: '#334155', title: 'Price (₹)' }
     };
 
     Plotly.newPlot('chart', [trace], layout, { responsive: true });
