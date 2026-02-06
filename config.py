@@ -17,12 +17,18 @@ class Config:
     ALPHA_VANTAGE_API_KEY = os.getenv('ALPHA_VANTAGE_API_KEY', '8MZEFUFMBSNMQWA9')
     
     # Database Configuration
-    DB_TYPE = os.getenv('DB_TYPE', 'mongodb')
-    MONGODB_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017/trading_agent')
-    MYSQL_HOST = os.getenv('MYSQL_HOST', 'localhost')
-    MYSQL_USER = os.getenv('MYSQL_USER', 'root')
-    MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD', '')
-    MYSQL_DATABASE = os.getenv('MYSQL_DATABASE', 'trading_agent')
+    DB_TYPE = os.getenv('DB_TYPE', 'postgresql')
+    
+    # PostgreSQL Configuration
+    POSTGRES_HOST = os.getenv('POSTGRES_HOST', 'localhost')
+    POSTGRES_PORT = int(os.getenv('POSTGRES_PORT', 5432))
+    POSTGRES_USER = os.getenv('POSTGRES_USER', 'postgres')
+    POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD', '')
+    POSTGRES_DATABASE = os.getenv('POSTGRES_DATABASE', 'trading_agent')
+    
+    # SQLAlchemy Database URI for PostgreSQL
+    SQLALCHEMY_DATABASE_URI = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DATABASE}"
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Application Settings
     FLASK_ENV = os.getenv('FLASK_ENV', 'development')
