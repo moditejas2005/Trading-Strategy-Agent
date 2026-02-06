@@ -226,20 +226,21 @@ function plotPriceChart(data) {
 
     const layout = {
         title: 'Price History',
-        paper_bgcolor: '#1e293b',
-        plot_bgcolor: '#0f172a',
+        paper_bgcolor: '#222631',
+        plot_bgcolor: '#1A1D2E',
         font: { color: '#f1f5f9' },
         xaxis: {
-            gridcolor: '#334155',
+            gridcolor: '#2F3441',
             tickangle: -45,
             automargin: true
         },
-        yaxis: { gridcolor: '#334155', title: 'Price (₹)' },
+        yaxis: { gridcolor: '#2F3441', title: 'Price (₹)' },
         height: 500,
-        margin: { t: 50, b: 100, l: 80, r: 40 }
+        margin: { t: 50, b: 100, l: 80, r: 40 },
+        autosize: true
     };
 
-    Plotly.newPlot('chart', [trace], layout, { responsive: true });
+    Plotly.newPlot('chart', [trace], layout, { responsive: true, displayModeBar: false });
 }
 
 function plotPortfolioChart(data) {
@@ -253,25 +254,27 @@ function plotPortfolioChart(data) {
         mode: 'lines',
         fill: 'tozeroy',
         name: 'Portfolio Value',
-        line: { color: '#10b981', width: 2 }
+        line: { color: '#00C853', width: 2 },
+        fillcolor: 'rgba(0, 200, 83, 0.1)'
     };
 
     const layout = {
         title: 'Portfolio Value Over Time',
-        paper_bgcolor: '#1e293b',
-        plot_bgcolor: '#0f172a',
+        paper_bgcolor: '#222631',
+        plot_bgcolor: '#1A1D2E',
         font: { color: '#f1f5f9' },
         xaxis: {
-            gridcolor: '#334155',
+            gridcolor: '#2F3441',
             tickangle: -45,
             automargin: true
         },
-        yaxis: { gridcolor: '#334155', title: 'Value (₹)' },
+        yaxis: { gridcolor: '#2F3441', title: 'Value (₹)' },
         height: 500,
-        margin: { t: 50, b: 100, l: 80, r: 40 }
+        margin: { t: 50, b: 100, l: 80, r: 40 },
+        autosize: true
     };
 
-    Plotly.newPlot('portfolioChart', [trace], layout, { responsive: true });
+    Plotly.newPlot('portfolioChart', [trace], layout, { responsive: true, displayModeBar: false });
 }
 
 function getSignalClass(signal) {
