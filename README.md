@@ -215,10 +215,25 @@ This software is for **educational purposes only**. Always do your own research 
 
 ---
 
-## 🖼️ Preview
+## 🖼️ Dashboard Preview
 
-![Dashboard Preview](assets/dashboard_preview.png)
+### 🖥️ Main Interface & Market Analysis
+![Dashboard Overview](assets/dashboard_preview.png)
+
+### 📈 Technical Analysis & Signals
+![Technical Analysis](assets/technical_indicators.png)
+
+### 🤖 AI Strategy Generation
+![AI Strategy](assets/trading_strategy.png)
+
+### 📉 Performance Backtesting
+![Backtesting](assets/backtest_results.png)
+
+### 📊 Professional Price Charts
+![Price Chart](assets/price_history.png)
 
 ---
+
+**Made with ❤️ by Tejas Modi**
 
 
