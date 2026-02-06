@@ -1,41 +1,104 @@
-# Trading Strategy Agent
+# 📈 AI Trading Strategy Agent
+
+**An AI-powered trading strategy system for intelligent market analysis and data-driven investment decisions**
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Flask](https://img.shields.io/badge/Flask-3.0.0-green.svg)](https://flask.palletsprojects.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-An intelligent AI-powered trading strategy system that analyzes financial markets, generates automated trading strategies, and provides data-driven investment recommendations.
+---
 
-![Trading Dashboard](https://img.shields.io/badge/Status-Production%20Ready-success)
+## 🔍 Overview
 
-## Features
+The **AI Trading Strategy Agent** is an intelligent system designed to analyze financial market data and generate automated trading strategies using Artificial Intelligence. The system helps users make data-driven trading decisions using technical indicators and machine learning models.
 
-### Core Functionality
-- **Dual Data Sources** - yfinance + Alpha Vantage API for maximum reliability
-- **Technical Indicators** - RSI, MACD, Moving Averages, Bollinger Bands
-- **AI Strategy Generation** - Intelligent BUY/SELL/HOLD recommendations
-- **Advanced Backtesting** - Historical performance with 10+ metrics
-- **PostgreSQL Database** - Persistent storage for strategies and results
-- **Interactive Dashboard** - Modern dark-themed web interface
-- **Real-time Analytics** - Live charts and performance visualizations
-- **INR Currency Support** - All prices converted to Indian Rupees
+The system provides:
 
-### API Integrations
-- **Alpha Vantage API** - Enhanced market data & fundamentals
-- **yfinance** - Primary stock data source
-- **PostgreSQL** - Production-grade database
+* 📊 **Fetches** real-time market data from multiple sources
+* 📈 **Calculates** technical indicators (RSI, MACD, Moving Averages)
+* 🤖 **Generates** AI-powered trading signals (BUY/SELL/HOLD)
+* 📉 **Backtests** strategies using historical data
+* 💹 **Visualizes** results through interactive charts
+* 💰 **Displays** all prices in INR (₹) with live conversion
 
-### Technical Highlights
-- RESTful API with Flask
-- SQLAlchemy ORM for database operations
-- Modular Python architecture
-- Real-time data visualization with Plotly
-- Comprehensive test suite with pytest
-- Example scripts and documentation
+This project demonstrates practical **AI-driven trading analysis**, combining technical analysis, strategy generation, and performance visualization.
 
-## Available Stocks (25 Total)
+---
 
-### Indian Stocks (NSE) - 15
+## 🎯 Key Features
+
+* **📊 Dual Data Sources**: yfinance + Alpha Vantage API for maximum reliability
+* **📈 Technical Indicators**: RSI, MACD, Moving Averages, Bollinger Bands
+* **🤖 AI Strategy Generation**: Intelligent BUY/SELL/HOLD recommendations with confidence scores
+* **📉 Advanced Backtesting**: Historical performance analysis with 10+ metrics
+* **💾 PostgreSQL Database**: Persistent storage for strategies and results
+* **🖥️ Interactive Dashboard**: Modern dark-themed web interface with real-time charts
+* **💰 INR Currency Support**: All prices converted to Indian Rupees (₹)
+* **🔒 Secure Configuration**: Environment-based API key management
+
+---
+
+## 🏗️ System Architecture
+
+```
+┌─────────────────────────────┐
+│     Financial Data APIs     │
+│  (yfinance + Alpha Vantage) │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│    Data Collection Module   │
+│    (data_collector.py)      │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│   Currency Conversion       │
+│   (USD → INR Live Rates)    │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│  Technical Indicators       │
+│  (RSI, MACD, MA, Bollinger) │
+│  (indicators.py)            │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│  AI Strategy Generator      │
+│  (BUY/SELL/HOLD Signals)    │
+│  (strategy_generator.py)    │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│  Backtesting Engine         │
+│  (Historical Performance)   │
+│  (backtester.py)            │
+└──────────┬──────────────────┘
+           ↓
+┌─────────────────────────────┐
+│  Flask API + Dashboard      │
+│  (Interactive Web UI)       │
+└─────────────────────────────┘
+```
+
+---
+
+## 🧰 Tech Stack
+
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **Backend** | Flask | RESTful API server |
+| **Frontend** | HTML/CSS/JS | Interactive dashboard |
+| **Database** | PostgreSQL | Data persistence |
+| **Charts** | Plotly | Interactive visualizations |
+| **Data API** | yfinance | Primary market data |
+| **Data API** | Alpha Vantage | Secondary market data |
+| **Language** | Python 3.9+ | Core application logic |
+
+---
+
+## 📋 Available Stocks (25 Total)
+
+### 🇮🇳 Indian Stocks (NSE) - 15
 
 | Symbol | Company |
 |--------|---------|
@@ -55,7 +118,7 @@ An intelligent AI-powered trading strategy system that analyzes financial market
 | MARUTI.NS | Maruti Suzuki |
 | TATAMOTORS.NS | Tata Motors |
 
-### US Stocks - 10
+### 🇺🇸 US Stocks - 10
 
 | Symbol | Company |
 |--------|---------|
@@ -72,170 +135,90 @@ An intelligent AI-powered trading strategy system that analyzes financial market
 
 > **Note:** All prices are displayed in ₹ (INR) with live USD to INR conversion.
 
-## Quick Start
+---
+
+## 🛠️ Installation & Setup
 
 ### Prerequisites
-- Python 3.9 or higher
+- Python 3.9+
 - pip package manager
 - Git
+- PostgreSQL (optional)
 
-### Installation
+### Quick Setup
 
-1. **Clone the repository**
 ```bash
+# 1. Clone repository
 git clone https://github.com/moditejas2005/Trading-Strategy-Agent.git
 cd Trading-Strategy-Agent
-```
 
-2. **Install dependencies**
-```bash
+# 2. Install dependencies
 pip install -r requirements.txt
-```
 
-3. **Setup PostgreSQL database** (Optional)
-```bash
-# Install PostgreSQL (if not already installed)
-# Windows: https://www.postgresql.org/download/windows/
-# Mac: brew install postgresql
-# Linux: sudo apt-get install postgresql
-
-# Create database
-psql -U postgres
-CREATE DATABASE trading_agent;
-\q
-
-# Initialize tables
-python database.py
-```
-
-4. **Configure environment variables**
-```bash
+# 3. Configure environment
 cp .env.example .env
-# Edit .env with your credentials
-```
+# Add your API keys to .env file
 
-5. **Run the application**
-```bash
+# 4. Run application
 python app.py
 ```
 
-6. **Open your browser**
-```
-http://localhost:5000
-```
+---
 
-## Project Structure
+## 🎮 Usage
 
-```
-Trading-Strategy-Agent/
-├── modules/
-│   ├── data_collector.py      # Market data fetching
-│   ├── indicators.py          # Technical indicators
-│   ├── strategy_generator.py  # AI strategy generation
-│   ├── backtester.py          # Backtesting engine
-│   ├── currency_converter.py  # USD to INR conversion
-│   └── alpha_vantage_collector.py  # Alpha Vantage API
-├── templates/
-│   └── index.html             # Dashboard UI
-├── static/
-│   ├── css/
-│   │   └── style.css          # Modern dark theme
-│   └── js/
-│       └── app.js             # Frontend logic
-├── app.py                     # Flask API server
-├── config.py                  # Configuration management
-├── requirements.txt           # Python dependencies
-└── README.md                  # This file
-```
+1. **Start the app**: Open your browser to `http://localhost:5000`
+2. **Select stock**: Choose from 25 available Indian (NSE) or US stocks
+3. **Choose period**: Select time period (1 Month to 2 Years)
+4. **Analyze**: Click "Analyze" to get AI-powered trading signals
+5. **Backtest**: Run historical performance analysis
+6. **Review results**: Check charts, indicators, and recommendations
 
-## Usage Examples
+---
 
-### Analyze a Stock
-```python
-from modules.data_collector import DataCollector
-from modules.indicators import TechnicalIndicators
+## 📊 Example Output
 
-# Fetch data
-collector = DataCollector(symbol='RELIANCE.NS', period='3mo')
-data = collector.fetch_data()
+**Trading Signal**: 🟢 BUY  
+**Confidence**: 8/10  
+**Current Price**: ₹14,906.50  
+**RSI**: 45.32 (Neutral)  
+**MACD**: Bullish Crossover  
 
-# Calculate indicators
-indicators = TechnicalIndicators(data)
-signals = indicators.get_latest_signals()
+**Backtest Results**:
+- Initial Capital: ₹1,00,000
+- Final Value: ₹1,24,350
+- Total Return: +24.35%
+- Win Rate: 62.5%
 
-print(signals)
-```
+---
 
-### Run Backtest
-```python
-from modules.backtester import Backtester
+## 🚀 Future Enhancements
 
-backtester = Backtester(data, initial_capital=100000)
-results = backtester.run_backtest(strategy_type='combined')
+* **📈 Real-time Trading**: Automated order execution
+* **🤖 ML Models**: Reinforcement learning strategies
+* **📱 Mobile App**: React Native application
+* **🔗 Broker Integration**: Direct brokerage API connection
+* **🧠 Multi-Agent System**: Collaborative AI trading agents
+* **📊 Advanced Analytics**: Sentiment analysis integration
 
-print(f"Total Return: {results['total_return_pct']:.2f}%")
-print(f"Win Rate: {results['win_rate']:.2f}%")
-```
+---
 
-## API Endpoints
+## 📚 Documentation
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/health` | GET | Health check |
-| `/api/market-data` | GET | Fetch market data |
-| `/api/indicators` | GET | Calculate indicators |
-| `/api/strategy` | POST | Generate strategy |
-| `/api/backtest` | POST | Run backtest |
+* **Project Repository**: [GitHub](https://github.com/moditejas2005/Trading-Strategy-Agent)
 
-## Dashboard Features
+---
 
-- **Real-time Analysis** - Live market data and indicators
-- **Strategy Recommendations** - BUY/SELL/HOLD signals with confidence scores
-- **Interactive Charts** - Price history and portfolio performance
-- **Backtest Results** - Historical performance metrics
-- **Dark Theme** - Modern, eye-friendly interface
+## ⚠️ Disclaimer
 
-## Testing
+This software is for **educational purposes only**. Always do your own research before making trading decisions. The developers are not responsible for any financial losses.
 
-Run tests:
-```bash
-pytest tests/ -v
-```
+---
 
-Run with coverage:
-```bash
-pytest tests/ --cov=modules --cov-report=html
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [yfinance](https://github.com/ranaroussi/yfinance) - Market data provider
-- [Flask](https://flask.palletsprojects.com/) - Web framework
-- [Plotly](https://plotly.com/) - Visualization library
-- [Alpha Vantage](https://www.alphavantage.co/) - Financial data API
-
-## Disclaimer
-
-This software is for educational purposes only. Always do your own research before making trading decisions. The developers are not responsible for any financial losses.
-
-## Contact
+## 📧 Contact
 
 For questions or support, please open an issue on GitHub.
 
 ---
 
-**Made with ❤️ by the Trading Strategy Agent Team**
+**Made with ❤️ by Tejas Modi**
