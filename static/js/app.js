@@ -229,10 +229,14 @@ function plotPriceChart(data) {
         paper_bgcolor: '#1e293b',
         plot_bgcolor: '#0f172a',
         font: { color: '#f1f5f9' },
-        xaxis: { gridcolor: '#334155' },
+        xaxis: {
+            gridcolor: '#334155',
+            tickangle: -45,
+            automargin: true
+        },
         yaxis: { gridcolor: '#334155', title: 'Price (₹)' },
         height: 500,
-        margin: { t: 50, b: 50, l: 60, r: 30 }
+        margin: { t: 50, b: 100, l: 80, r: 40 }
     };
 
     Plotly.newPlot('chart', [trace], layout, { responsive: true });
@@ -257,10 +261,14 @@ function plotPortfolioChart(data) {
         paper_bgcolor: '#1e293b',
         plot_bgcolor: '#0f172a',
         font: { color: '#f1f5f9' },
-        xaxis: { gridcolor: '#334155' },
+        xaxis: {
+            gridcolor: '#334155',
+            tickangle: -45,
+            automargin: true
+        },
         yaxis: { gridcolor: '#334155', title: 'Value (₹)' },
         height: 500,
-        margin: { t: 50, b: 50, l: 60, r: 30 }
+        margin: { t: 50, b: 100, l: 80, r: 40 }
     };
 
     Plotly.newPlot('portfolioChart', [trace], layout, { responsive: true });
