@@ -6,6 +6,7 @@ import yfinance as yf
 import pandas as pd
 from typing import Optional, Dict, Any
 import logging
+from modules.currency_converter import get_converter
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -60,7 +61,14 @@ class DataCollector:
                     if self.data.index.tz is not None:
                         self.data.index = self.data.index.tz_localize(None)
                     
-                    logger.info(f"Successfully fetched {len(self.data)} records for {self.symbol}")
+                    # Convert USD prices to INR
+                    converter = get_converter()
+                    price_columns = ['Open', 'High', 'Low', 'Close']
+                    for col in price_columns:
+                        if col in self.data.columns:
+                            self.data[col] = self.data[col].apply(converter.usd_to_inr)
+                    
+                    logger.info(f"Successfully fetched {len(self.data)} records for {self.symbol} (prices converted to INR)")
                     return self.data
                 else:
                     logger.warning(f"No data found for {self.symbol} on attempt {retry_count + 1}")
@@ -99,15 +107,17 @@ class DataCollector:
             ticker = yf.Ticker(self.symbol)
             info = ticker.info
             
+            converter = get_converter()
+            
             return {
                 'symbol': self.symbol,
                 'name': info.get('longName', 'N/A'),
                 'sector': info.get('sector', 'N/A'),
                 'industry': info.get('industry', 'N/A'),
                 'marketCap': info.get('marketCap', 0),
-                'currentPrice': info.get('currentPrice', 0),
-                'fiftyTwoWeekHigh': info.get('fiftyTwoWeekHigh', 0),
-                'fiftyTwoWeekLow': info.get('fiftyTwoWeekLow', 0),
+                'currentPrice': converter.usd_to_inr(info.get('currentPrice', 0)),
+                'fiftyTwoWeekHigh': converter.usd_to_inr(info.get('fiftyTwoWeekHigh', 0)),
+                'fiftyTwoWeekLow': converter.usd_to_inr(info.get('fiftyTwoWeekLow', 0)),
             }
         except Exception as e:
             logger.error(f"Error getting ticker info: {str(e)}")

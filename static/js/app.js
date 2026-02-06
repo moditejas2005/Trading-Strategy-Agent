@@ -6,7 +6,7 @@ let currentData = null;
 async function analyzeStock() {
     const symbol = document.getElementById('symbol').value.toUpperCase();
     const period = document.getElementById('period').value;
-    
+
     if (!symbol) {
         alert('Please enter a stock symbol');
         return;
@@ -69,7 +69,7 @@ async function runBacktest() {
         });
 
         const backtestData = await response.json();
-        
+
         if (backtestData.error) {
             throw new Error(backtestData.error);
         }
@@ -174,7 +174,7 @@ function displayResults(data) {
 
 function displayBacktestResults(backtestData) {
     const results = backtestData.results;
-    
+
     document.getElementById('backtestData').innerHTML = `
         <div class="info-grid">
             <div class="info-item">
