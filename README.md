@@ -12,20 +12,29 @@ An intelligent AI-powered trading strategy system that analyzes financial market
 ## ✨ Features
 
 ### Core Functionality
-- 📊 **Real-time Market Data** - Fetch live stock and cryptocurrency data
+- 📊 **Dual Data Sources** - yfinance + Alpha Vantage API for maximum reliability
 - 📈 **Technical Indicators** - RSI, MACD, Moving Averages, Bollinger Bands
-- 🤖 **AI Strategy Generation** - Intelligent trading recommendations
-- ⚡ **Prompt Optimization** - ScaleDown API integration for cost reduction
-- 📉 **Backtesting Engine** - Test strategies on historical data
+- 🤖 **AI Strategy Generation** - Intelligent BUY/SELL/HOLD recommendations
+- ⚡ **Prompt Optimization** - ScaleDown API integration for 50%+ token reduction
+- 📉 **Advanced Backtesting** - Historical performance with 10+ metrics
+- 💾 **PostgreSQL Database** - Persistent storage for strategies and results
 - 📱 **Interactive Dashboard** - Modern dark-themed web interface
-- 📊 **Performance Analytics** - Comprehensive metrics and visualizations
+- 📊 **Real-time Analytics** - Live charts and performance visualizations
+
+### API Integrations (All Configured ✅)
+- **ScaleDown API** (skills.sh) - Prompt optimization
+- **Alpha Vantage API** - Enhanced market data & fundamentals
+- **yfinance** - Primary stock data source
+- **PostgreSQL** - Production-grade database
 
 ### Technical Highlights
 - RESTful API with Flask
+- SQLAlchemy ORM for database operations
 - Modular Python architecture
 - Real-time data visualization with Plotly
 - CI/CD pipeline with GitHub Actions
-- Comprehensive backtesting with performance metrics
+- Comprehensive test suite with pytest
+- Example scripts and documentation
 
 ## 🚀 Quick Start
 
@@ -47,18 +56,36 @@ cd Trading-Strategy-Agent
 pip install -r requirements.txt
 ```
 
-3. **Configure environment variables**
+3. **Setup PostgreSQL database**
 ```bash
-cp .env.example .env
-# Edit .env with your API keys
+# Install PostgreSQL (if not already installed)
+# Windows: https://www.postgresql.org/download/windows/
+# Mac: brew install postgresql
+# Linux: sudo apt-get install postgresql
+
+# Create database
+psql -U postgres
+CREATE DATABASE trading_agent;
+\q
+
+# Initialize tables
+python database.py
 ```
 
-4. **Run the application**
+4. **Configure environment variables**
+```bash
+cp .env.example .env
+# Edit .env with your credentials:
+# - POSTGRES_PASSWORD=your_password
+# - (API keys already configured)
+```
+
+5. **Run the application**
 ```bash
 python app.py
 ```
 
-5. **Open your browser**
+6. **Open your browser**
 ```
 http://localhost:5000
 ```
