@@ -17,7 +17,7 @@
                 <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
                 <div>
                     <div>Trading Strategy Agent</div>
-                    <div class="header-subtitle">AI-Powered Market Analysis • INR</div>
+                    <div class="header-subtitle">AI-Powered Market Analysis</div>
                 </div>
             </div>
         </div>
@@ -30,33 +30,33 @@
                     <label class="form-label" for="symbol">Stock Symbol</label>
                     <select id="symbol" class="form-select">
                         <optgroup label="Indian Stocks (NSE)">
-                            <option value="RELIANCE.NS">Reliance Industries</option>
-                            <option value="TCS.NS">Tata Consultancy Services</option>
-                            <option value="HDFCBANK.NS">HDFC Bank</option>
-                            <option value="INFY.NS">Infosys</option>
-                            <option value="ICICIBANK.NS">ICICI Bank</option>
-                            <option value="HINDUNILVR.NS">Hindustan Unilever</option>
-                            <option value="SBIN.NS">State Bank of India</option>
-                            <option value="BHARTIARTL.NS">Bharti Airtel</option>
-                            <option value="BAJFINANCE.NS">Bajaj Finance</option>
-                            <option value="WIPRO.NS">Wipro</option>
-                            <option value="KOTAKBANK.NS">Kotak Mahindra Bank</option>
-                            <option value="LT.NS">Larsen & Toubro</option>
-                            <option value="AXISBANK.NS">Axis Bank</option>
-                            <option value="MARUTI.NS">Maruti Suzuki</option>
-                            <option value="TATAMOTORS.NS">Tata Motors</option>
+                            <option value="RELIANCE.NS">RELIANCE.NS - Reliance Industries</option>
+                            <option value="TCS.NS">TCS.NS - Tata Consultancy Services</option>
+                            <option value="HDFCBANK.NS">HDFCBANK.NS - HDFC Bank</option>
+                            <option value="INFY.NS">INFY.NS - Infosys</option>
+                            <option value="ICICIBANK.NS">ICICIBANK.NS - ICICI Bank</option>
+                            <option value="HINDUNILVR.NS">HINDUNILVR.NS - Hindustan Unilever</option>
+                            <option value="SBIN.NS">SBIN.NS - State Bank of India</option>
+                            <option value="BHARTIARTL.NS">BHARTIARTL.NS - Bharti Airtel</option>
+                            <option value="BAJFINANCE.NS">BAJFINANCE.NS - Bajaj Finance</option>
+                            <option value="WIPRO.NS">WIPRO.NS - Wipro</option>
+                            <option value="KOTAKBANK.NS">KOTAKBANK.NS - Kotak Mahindra Bank</option>
+                            <option value="LT.NS">LT.NS - Larsen & Toubro</option>
+                            <option value="AXISBANK.NS">AXISBANK.NS - Axis Bank</option>
+                            <option value="MARUTI.NS">MARUTI.NS - Maruti Suzuki</option>
+                            <option value="TATAMOTORS.NS">TATAMOTORS.NS - Tata Motors</option>
                         </optgroup>
                         <optgroup label="US Stocks">
-                            <option value="AAPL" selected>Apple Inc.</option>
-                            <option value="GOOGL">Alphabet (Google)</option>
-                            <option value="MSFT">Microsoft</option>
-                            <option value="AMZN">Amazon</option>
-                            <option value="TSLA">Tesla</option>
-                            <option value="META">Meta (Facebook)</option>
-                            <option value="NVDA">NVIDIA</option>
-                            <option value="JPM">JPMorgan Chase</option>
-                            <option value="V">Visa</option>
-                            <option value="JNJ">Johnson & Johnson</option>
+                            <option value="AAPL" selected>AAPL - Apple Inc.</option>
+                            <option value="GOOGL">GOOGL - Alphabet (Google)</option>
+                            <option value="MSFT">MSFT - Microsoft</option>
+                            <option value="AMZN">AMZN - Amazon</option>
+                            <option value="TSLA">TSLA - Tesla</option>
+                            <option value="META">META - Meta (Facebook)</option>
+                            <option value="NVDA">NVDA - NVIDIA</option>
+                            <option value="JPM">JPM - JPMorgan Chase</option>
+                            <option value="V">V - Visa</option>
+                            <option value="JNJ">JNJ - Johnson & Johnson</option>
                         </optgroup>
                     </select>
                 </div>
@@ -81,9 +81,142 @@
             </div>
         </div>
 
-        <div class="stock-info">
-            <p><i class="fas fa-info-circle"></i> <strong>25 stocks available:</strong> 15 Indian (NSE) + 10 US stocks.
-                Prices shown in ₹ (INR)</p>
+        <!-- Available Stocks Section -->
+        <div class="card stocks-list-card">
+            <div class="card-header" onclick="toggleStocksList()">
+                <h2 class="card-title"><i class="fas fa-list"></i> Available Stocks (25 Total)</h2>
+                <i class="fas fa-chevron-down toggle-icon" id="toggleIcon"></i>
+            </div>
+            <div class="stocks-container" id="stocksContainer">
+                <div class="stocks-grid">
+                    <div class="stocks-column">
+                        <h3><i class="fas fa-flag"></i> Indian Stocks (NSE) - 15</h3>
+                        <table class="stocks-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Company</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>RELIANCE.NS</td>
+                                    <td>Reliance Industries</td>
+                                </tr>
+                                <tr>
+                                    <td>TCS.NS</td>
+                                    <td>Tata Consultancy Services</td>
+                                </tr>
+                                <tr>
+                                    <td>HDFCBANK.NS</td>
+                                    <td>HDFC Bank</td>
+                                </tr>
+                                <tr>
+                                    <td>INFY.NS</td>
+                                    <td>Infosys</td>
+                                </tr>
+                                <tr>
+                                    <td>ICICIBANK.NS</td>
+                                    <td>ICICI Bank</td>
+                                </tr>
+                                <tr>
+                                    <td>HINDUNILVR.NS</td>
+                                    <td>Hindustan Unilever</td>
+                                </tr>
+                                <tr>
+                                    <td>SBIN.NS</td>
+                                    <td>State Bank of India</td>
+                                </tr>
+                                <tr>
+                                    <td>BHARTIARTL.NS</td>
+                                    <td>Bharti Airtel</td>
+                                </tr>
+                                <tr>
+                                    <td>BAJFINANCE.NS</td>
+                                    <td>Bajaj Finance</td>
+                                </tr>
+                                <tr>
+                                    <td>WIPRO.NS</td>
+                                    <td>Wipro</td>
+                                </tr>
+                                <tr>
+                                    <td>KOTAKBANK.NS</td>
+                                    <td>Kotak Mahindra Bank</td>
+                                </tr>
+                                <tr>
+                                    <td>LT.NS</td>
+                                    <td>Larsen & Toubro</td>
+                                </tr>
+                                <tr>
+                                    <td>AXISBANK.NS</td>
+                                    <td>Axis Bank</td>
+                                </tr>
+                                <tr>
+                                    <td>MARUTI.NS</td>
+                                    <td>Maruti Suzuki</td>
+                                </tr>
+                                <tr>
+                                    <td>TATAMOTORS.NS</td>
+                                    <td>Tata Motors</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="stocks-column">
+                        <h3><i class="fas fa-globe"></i> US Stocks - 10</h3>
+                        <table class="stocks-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Company</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AAPL</td>
+                                    <td>Apple Inc.</td>
+                                </tr>
+                                <tr>
+                                    <td>GOOGL</td>
+                                    <td>Alphabet (Google)</td>
+                                </tr>
+                                <tr>
+                                    <td>MSFT</td>
+                                    <td>Microsoft</td>
+                                </tr>
+                                <tr>
+                                    <td>AMZN</td>
+                                    <td>Amazon</td>
+                                </tr>
+                                <tr>
+                                    <td>TSLA</td>
+                                    <td>Tesla</td>
+                                </tr>
+                                <tr>
+                                    <td>META</td>
+                                    <td>Meta (Facebook)</td>
+                                </tr>
+                                <tr>
+                                    <td>NVDA</td>
+                                    <td>NVIDIA</td>
+                                </tr>
+                                <tr>
+                                    <td>JPM</td>
+                                    <td>JPMorgan Chase</td>
+                                </tr>
+                                <tr>
+                                    <td>V</td>
+                                    <td>Visa</td>
+                                </tr>
+                                <tr>
+                                    <td>JNJ</td>
+                                    <td>Johnson & Johnson</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="loading" class="card loading-state" style="display: none;">
@@ -131,6 +264,14 @@
     </div>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+        function toggleStocksList() {
+            const container = document.getElementById('stocksContainer');
+            const icon = document.getElementById('toggleIcon');
+            container.classList.toggle('collapsed');
+            icon.classList.toggle('rotated');
+        }
+    </script>
 </body>
 
 </html>
