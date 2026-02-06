@@ -4,7 +4,7 @@ Generates trading strategies using AI models
 """
 import logging
 from typing import Dict, Any, Optional
-from modules.prompt_optimizer import PromptOptimizer
+import pandas as pd
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -25,7 +25,6 @@ class StrategyGenerator:
         """
         self.api_key = api_key
         self.use_optimization = use_optimization
-        self.optimizer = PromptOptimizer() if use_optimization else None
     
     def create_analysis_prompt(self, 
                               symbol: str,
@@ -47,9 +46,9 @@ class StrategyGenerator:
 
 ## Current Market Data
 - Symbol: {symbol}
-- Current Price: ${market_data.get('current_price', 'N/A')}
-- 52-Week High: ${market_data.get('high_52w', 'N/A')}
-- 52-Week Low: ${market_data.get('low_52w', 'N/A')}
+- Current Price: ₹{market_data.get('current_price', 'N/A')}
+- 52-Week High: ₹{market_data.get('high_52w', 'N/A')}
+- 52-Week Low: ₹{market_data.get('low_52w', 'N/A')}
 
 ## Technical Indicators
 """
@@ -78,8 +77,8 @@ class StrategyGenerator:
         # Add Moving Averages
         if 'SMA_Short' in indicators and 'SMA_Long' in indicators:
             prompt += f"\n\n### Moving Averages"
-            prompt += f"\n- Short-term MA (20): ${indicators['SMA_Short']:.2f}"
-            prompt += f"\n- Long-term MA (50): ${indicators['SMA_Long']:.2f}"
+            prompt += f"\n- Short-term MA (20): ₹{indicators['SMA_Short']:.2f}"
+            prompt += f"\n- Long-term MA (50): ₹{indicators['SMA_Long']:.2f}"
             if indicators['SMA_Short'] > indicators['SMA_Long']:
                 prompt += "\n- Crossover: BULLISH (Golden Cross potential)"
             else:
@@ -119,17 +118,7 @@ Keep the analysis concise and actionable.
         # Create analysis prompt
         original_prompt = self.create_analysis_prompt(symbol, indicators, market_data)
         
-        # Optimize prompt if enabled
-        optimized_prompt = original_prompt
-        optimization_data = None
-        
-        if self.use_optimization and self.optimizer:
-            logger.info("Optimizing analysis prompt...")
-            optimization_result = self.optimizer.optimize_prompt(original_prompt)
-            optimized_prompt = optimization_result['optimized_prompt']
-            optimization_data = optimization_result
-        
-        # Generate strategy (placeholder for actual AI call)
+        # Generate strategy
         strategy = self._generate_mock_strategy(symbol, indicators)
         
         return {
@@ -137,8 +126,7 @@ Keep the analysis concise and actionable.
             'strategy': strategy,
             'prompt': {
                 'original': original_prompt,
-                'optimized': optimized_prompt,
-                'optimization': optimization_data
+                'optimized': original_prompt
             },
             'timestamp': pd.Timestamp.now().isoformat()
         }
@@ -146,7 +134,6 @@ Keep the analysis concise and actionable.
     def _generate_mock_strategy(self, symbol: str, indicators: Dict[str, Any]) -> Dict[str, Any]:
         """
         Generate a mock strategy based on indicators
-        (This would be replaced with actual AI API call)
         
         Args:
             symbol: Stock symbol
@@ -200,10 +187,6 @@ Keep the analysis concise and actionable.
             'risk_management': "Use 2% position sizing with stop-loss at 5% below entry",
             'time_horizon': "Short to medium term (1-4 weeks)"
         }
-
-
-# Import pandas here to avoid circular import
-import pandas as pd
 
 
 if __name__ == "__main__":

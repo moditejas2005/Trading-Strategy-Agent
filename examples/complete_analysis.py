@@ -5,7 +5,6 @@ from modules.data_collector import DataCollector
 from modules.indicators import TechnicalIndicators
 from modules.strategy_generator import StrategyGenerator
 from modules.backtester import Backtester
-from modules.prompt_optimizer import PromptOptimizer
 
 
 def main():
@@ -28,7 +27,7 @@ def main():
         return
     
     print(f"✅ Fetched {len(data)} records")
-    print(f"   Latest Price: ${collector.get_latest_price():.2f}")
+    print(f"   Latest Price: ₹{collector.get_latest_price():.2f}")
     
     # Step 2: Calculate Technical Indicators
     print(f"\n📈 Step 2: Calculating technical indicators...")

@@ -6,7 +6,6 @@ import pandas as pd
 from modules.data_collector import DataCollector
 from modules.indicators import TechnicalIndicators
 from modules.strategy_generator import StrategyGenerator
-from modules.prompt_optimizer import PromptOptimizer
 from modules.backtester import Backtester
 
 
@@ -74,23 +73,6 @@ class TestTechnicalIndicators:
         signals = indicators.get_latest_signals()
         assert 'indicators' in signals
         assert 'signals' in signals
-
-
-class TestPromptOptimizer:
-    """Test PromptOptimizer module"""
-    
-    def test_initialization(self):
-        """Test optimizer initialization"""
-        optimizer = PromptOptimizer()
-        assert optimizer is not None
-    
-    def test_optimize_prompt(self):
-        """Test prompt optimization"""
-        optimizer = PromptOptimizer()
-        result = optimizer.optimize_prompt("Test prompt for optimization")
-        assert 'original_prompt' in result
-        assert 'optimized_prompt' in result
-        assert 'reduction_percentage' in result
 
 
 class TestStrategyGenerator:
