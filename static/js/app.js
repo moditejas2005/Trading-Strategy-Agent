@@ -95,15 +95,15 @@ function displayResults(data) {
             </div>
             <div class="info-item">
                 <label>Current Price</label>
-                <div class="value">$${marketInfo.currentPrice.toFixed(2)}</div>
+                <div class="value">₹${marketInfo.currentPrice.toFixed(2)}</div>
             </div>
             <div class="info-item">
                 <label>52-Week High</label>
-                <div class="value">$${marketInfo.fiftyTwoWeekHigh.toFixed(2)}</div>
+                <div class="value">₹${marketInfo.fiftyTwoWeekHigh.toFixed(2)}</div>
             </div>
             <div class="info-item">
                 <label>52-Week Low</label>
-                <div class="value">$${marketInfo.fiftyTwoWeekLow.toFixed(2)}</div>
+                <div class="value">₹${marketInfo.fiftyTwoWeekLow.toFixed(2)}</div>
             </div>
             <div class="info-item">
                 <label>Sector</label>
@@ -179,16 +179,16 @@ function displayBacktestResults(backtestData) {
         <div class="info-grid">
             <div class="info-item">
                 <label>Initial Capital</label>
-                <div class="value">$${results.initial_capital.toLocaleString()}</div>
+                <div class="value">₹${results.initial_capital.toLocaleString()}</div>
             </div>
             <div class="info-item">
                 <label>Final Value</label>
-                <div class="value">$${results.final_value.toLocaleString()}</div>
+                <div class="value">₹${results.final_value.toLocaleString()}</div>
             </div>
             <div class="info-item">
                 <label>Total Return</label>
                 <div class="value ${results.total_return >= 0 ? 'positive' : 'negative'}">
-                    ${results.total_return >= 0 ? '+' : ''}$${results.total_return.toFixed(2)} 
+                    ${results.total_return >= 0 ? '+' : ''}₹${results.total_return.toFixed(2)} 
                     (${results.total_return_pct.toFixed(2)}%)
                 </div>
             </div>
