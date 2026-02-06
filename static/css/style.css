@@ -493,3 +493,9 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-muted);
 }
+
+/* Chart container - Full width */
+.chart-container {
+    width: 100%;
+    min-height: 500px;
+}
